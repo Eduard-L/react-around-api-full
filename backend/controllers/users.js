@@ -60,12 +60,12 @@ const getUserInfo = async (req, res, next) => {
 
 
 const updateUserInfo = async (req, res, next) => {
-  const { userId } = req.user;
+  const { id } = req.user;
   const { name, about } = req.body;
 
   try {
     const updateInfo = await User.findByIdAndUpdate(
-      userId,
+      id,
       { name, about },
       { runValidators: true, new: true },
 
