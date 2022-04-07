@@ -26,7 +26,7 @@ mainRouter.post('/signin', celebrate({
 
   })
 }), login)
-// mainRouter.use(auth)
+mainRouter.use(auth)
 
 mainRouter.use('/users', usersRouter);
 

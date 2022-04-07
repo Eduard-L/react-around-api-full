@@ -7,11 +7,11 @@ const { celebrate, Joi } = require('celebrate');
 const {
   deleteUser, getUsersData, getUserById, updateUserInfo, updateUserAvatar, getUserInfo
 } = require('../controllers/users');
-const { auth } = require('../middelwares/auth');
+// const { auth } = require('../middelwares/auth');
 
 usersRouter.get('/', getUsersData);
 
-usersRouter.get('/me', auth, getUserInfo);
+usersRouter.get('/me', getUserInfo);
 
 usersRouter.get('/:id', celebrate({
 
