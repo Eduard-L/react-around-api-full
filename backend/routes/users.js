@@ -7,16 +7,11 @@ const { celebrate, Joi } = require('celebrate');
 const {
   deleteUser, getUsersData, getUserById, updateUserInfo, updateUserAvatar, getUserInfo
 } = require('../controllers/users');
+const { auth } = require('../middelwares/auth');
 
 usersRouter.get('/', getUsersData);
 
-usersRouter.post('/me', celebrate({
-  body: Joi.object().keys({
-    email: Joi.string().required().email(),
-
-
-  })
-}), getUserInfo);
+usersRouter.get('/me', auth, getUserInfo);
 
 usersRouter.get('/:id', celebrate({
 

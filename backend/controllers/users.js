@@ -1,6 +1,7 @@
 
 const { User } = require('../utils/constants')
 const { NotFoundError, BadRequestError } = require('../utils/errorHandler')
+const auth = require('../middelwares/auth')
 
 const getUsersData = async (req, res, next) => {
   try {
@@ -37,9 +38,9 @@ const getUserById = async (req, res, next) => {
 };
 
 const getUserInfo = async (req, res, next) => {
-  const { email } = req.body
+  const { id } = req.user
   try {
-    const user = await User.findOne({ email })
+    const user = await User.findOne({ id })
     if (user) {
       res.status(200).send(user)
     }
