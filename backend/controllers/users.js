@@ -70,7 +70,7 @@ const updateUserInfo = async (req, res, next) => {
       { runValidators: true, new: true },
 
     );
-    if (updateInfo && (name || about)) {
+    if (updateInfo) {
       res.status(200).send(updateInfo);
     } else {
       // res.status(VALIDATION_CODE).send({ message: 'something went wrong with the update' });
