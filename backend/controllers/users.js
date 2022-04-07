@@ -72,9 +72,6 @@ const updateUserInfo = async (req, res, next) => {
     );
     if (updateInfo && (name || about)) {
       res.status(200).send(updateInfo);
-    } else if (userId !== '622330c03848c6c39908c775') {
-
-      next(new NotFoundError('the user that you are trying to update is no longer excist'))
     } else {
       // res.status(VALIDATION_CODE).send({ message: 'something went wrong with the update' });
       throw new Error();
