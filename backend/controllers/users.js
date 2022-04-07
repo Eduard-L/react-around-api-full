@@ -60,7 +60,7 @@ const getUserInfo = async (req, res, next) => {
 
 
 const updateUserInfo = async (req, res, next) => {
-  const userId = '624c469adbe0a187ab85d0be';
+  const { userId } = req.user;
   const { name, about } = req.body;
 
   try {
@@ -95,7 +95,7 @@ const updateUserInfo = async (req, res, next) => {
 };
 
 const updateUserAvatar = async (req, res, next) => {
-  const userId = "6248a8973fec0ef6873f5927";
+  const { userId } = req.user;
   const { avatar } = req.body;
 
   try {
