@@ -42,7 +42,7 @@ app.disable('x-powered-by');
 
 const { PORT = 3000 } = process.env;
 
-app.use(handleCors)
+// app.use(handleCors)
 app.use(cors());
 app.options('*', cors());
 
