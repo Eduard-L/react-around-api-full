@@ -52,8 +52,8 @@ const createCard = async (req, res, next) => {
   const { _id } = req.user;
   const { name, link } = req.body;
   try {
-    const user = await User.findById(_id)
-    const card = await Card.create({ name, link, owner: user });
+
+    const card = await Card.create({ name, link, owner: _id });
     if (card) {
       res.status(201).send(card);
     } else {
