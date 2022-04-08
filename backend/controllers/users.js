@@ -60,7 +60,7 @@ const getUserInfo = async (req, res, next) => {
 
 
 const updateUserInfo = async (req, res, next) => {
-  const { id } = req.user;
+  const id = '624e8b87bf2e7d35acf0d867';
   const { name, about } = req.body;
 
   try {
