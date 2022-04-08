@@ -1,4 +1,4 @@
-const { ForbiddentError } = require('../utils/errorHandler')
+const { Unauthorized } = require('../utils/errorHandler')
 const { jwt, mySecret } = require('../utils/constants')
 const auth = (req, res, next) => {
 
@@ -10,7 +10,7 @@ const auth = (req, res, next) => {
     if (!authorization || !authorization.startsWith('Bearer ')) {
 
       // throw new Unauthorized('Authorization required', UNAUTHORIZEDUSER_CODE)
-      next(new ForbiddentError('Authorization required'))
+      next(new Unauthorized('Authorization required'))
       return
 
     }
@@ -25,7 +25,7 @@ const auth = (req, res, next) => {
     }
     else {
       // throw new Unauthorized('Authorization required', UNAUTHORIZEDUSER_CODE)
-      next(new ForbiddentError('Authorization required'))
+      next(new Unauthorized('Authorization required'))
       return
     }
 
@@ -35,11 +35,7 @@ const auth = (req, res, next) => {
   }
   catch (e) {
 
-    // if (e instanceof Unauthorized) {
-    //   res.status(e.status).send({ message: `${e.message}` })
-    //   return
-    // }
-    // res.status(DEFAULTERROR_CODE).send({ message: `something went wrong with the backend, ${e}` });
+
     next(e)
 
   }

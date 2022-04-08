@@ -10,6 +10,12 @@ const { celebrate, Joi } = require('celebrate');
 
 const { createUser } = require('../controllers/createUser')
 
+mainRouter.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Server will crash now');
+  }, 0);
+});
+
 mainRouter.post('/signup', celebrate({
   body: Joi.object().keys({
 
