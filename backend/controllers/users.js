@@ -65,7 +65,7 @@ const updateUserInfo = async (req, res, next) => {
   console.log(_id)
   try {
     const updateInfo = await User.findByIdAndUpdate(
-      id,
+      _id,
       { name, about },
       { runValidators: true, new: true },
 
