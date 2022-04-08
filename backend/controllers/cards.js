@@ -53,7 +53,7 @@ const createCard = async (req, res, next) => {
   const { name, link } = req.body;
   try {
 
-    const card = await Card.create({ name, link, owner: _id });
+    const card = await Card.create({ name, link, owner: _id }).populate(["owner"]);
     if (card) {
       res.status(201).send(card);
     } else {
