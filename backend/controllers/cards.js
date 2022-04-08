@@ -72,7 +72,7 @@ const createCard = async (req, res, next) => {
 
 const deleteCard = async (req, res, next) => {
   const { id } = req.params;
-  console.log(req.params)
+
 
   try {
     const card = await Card.findByIdAndDelete(id);
@@ -102,7 +102,7 @@ const likeCard = async (req, res, next) => {
       req.params.id,
       { $addToSet: { likes: _id } },
       { new: true },
-    );
+    ).populate["owner", "likes"];
 
     if (like) {
       res.status(200).send(like);
@@ -133,7 +133,7 @@ const disLikeCard = async (req, res, next) => {
       req.params.id,
       { $pull: { likes: _id } },
       { new: true },
-    );
+    ).populate["owner", "likes"];
 
     if (like) {
       res.status(200).send(like);
