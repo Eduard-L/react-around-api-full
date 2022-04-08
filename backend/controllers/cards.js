@@ -2,6 +2,8 @@
 
 const Card = require('../models/card');
 
+const { User } = require('../utils/constants')
+
 const { NotFoundError, BadRequestError } = require('../utils/errorHandler')
 
 const VALIDATION_CODE = 400;
@@ -94,9 +96,11 @@ const deleteCard = async (req, res, next) => {
 const likeCard = async (req, res, next) => {
   const { _id } = req.user
   try {
+    const user = await User.findById({ _id })
+
     const like = await Card.findByIdAndUpdate(
       req.params.id,
-      { $addToSet: { likes: _id } },
+      { $addToSet: { likes: user } },
       { new: true },
     );
 
@@ -124,6 +128,7 @@ const likeCard = async (req, res, next) => {
 const disLikeCard = async (req, res, next) => {
   const { _id } = req.user
   try {
+    const user = await User.findById({ _id })
     const like = await Card.findByIdAndUpdate(
       req.params.id,
       { $pull: { likes: _id } },
