@@ -122,10 +122,11 @@ const likeCard = async (req, res, next) => {
 };
 
 const disLikeCard = async (req, res, next) => {
+  const { _id } = req.user
   try {
     const like = await Card.findByIdAndUpdate(
       req.params.id,
-      { $pull: { likes: '6248a8973fec0ef6873f5927' } },
+      { $pull: { likes: _id } },
       { new: true },
     );
 
