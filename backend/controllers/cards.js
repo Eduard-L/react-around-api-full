@@ -47,10 +47,10 @@ const getCardsById = async (req, res, next) => {
 };
 
 const createCard = async (req, res, next) => {
-  const userId = '6248a8973fec0ef6873f5927';
+  const { _id } = req.user;
   const { name, link } = req.body;
   try {
-    const card = await Card.create({ name, link, owner: userId });
+    const card = await Card.create({ name, link, owner: _id });
     if (card) {
       res.status(201).send(card);
     } else {

@@ -1,7 +1,7 @@
 
 const { User } = require('../utils/constants')
 const { NotFoundError, BadRequestError } = require('../utils/errorHandler')
-const auth = require('../middelwares/auth')
+
 
 const getUsersData = async (req, res, next) => {
   try {
@@ -37,7 +37,7 @@ const getUserById = async (req, res, next) => {
   }
 };
 
-const getUserInfo = async (req, res, next) => {
+const getUserInfo = async (req, res, next) => {//done
   const { id } = req.user
   try {
     const user = await User.findOne({ id })
@@ -59,7 +59,7 @@ const getUserInfo = async (req, res, next) => {
 
 
 
-const updateUserInfo = async (req, res, next) => {
+const updateUserInfo = async (req, res, next) => {//done
   const { _id } = req.user;
   const { name, about } = req.body;
   console.log(_id)
@@ -95,7 +95,7 @@ const updateUserInfo = async (req, res, next) => {
   }
 };
 
-const updateUserAvatar = async (req, res, next) => {
+const updateUserAvatar = async (req, res, next) => {//done
   const { _id } = req.user;
   const { avatar } = req.body;
 
