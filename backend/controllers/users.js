@@ -70,9 +70,13 @@ const updateUserInfo = async (req, res, next) => {
       { runValidators: true, new: true },
 
     );
-    if (updateInfo) {
+    if (updateInfo && (name || about)) {
       res.status(200).send(updateInfo);
-    } else {
+    }
+    else if (updateInfo === null) {
+      next(new NotFoundError('you are tryin to update user that does not excist'))
+    }
+    else {
       // res.status(VALIDATION_CODE).send({ message: 'something went wrong with the update' });
       throw new Error();
     }
@@ -92,14 +96,14 @@ const updateUserInfo = async (req, res, next) => {
 };
 
 const updateUserAvatar = async (req, res, next) => {
-  const { userId } = req.user;
+  const { _id } = req.user;
   const { avatar } = req.body;
 
   try {
-    const updateInfo = await User.findByIdAndUpdate(userId, { avatar }, { runValidators: true });
+    const updateInfo = await User.findByIdAndUpdate(_id, { avatar }, { runValidators: true });
     if (updateInfo && avatar) {
       res.status(200).send({ message: 'the user avatar updated successfully' });
-    } else if (userId !== '622330c03848c6c39908c775') {
+    } else if (userId !== null) {
       // res.status(NOTFOUND_CODE).json({ message: 'the user that you are trying to update is no longer excist' });
       next(new NotFoundError('the user that you are trying to update is no longer excist'))
     } else {
