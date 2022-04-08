@@ -60,9 +60,9 @@ const getUserInfo = async (req, res, next) => {
 
 
 const updateUserInfo = async (req, res, next) => {
-  const id = '624e8b87bf2e7d35acf0d867';
+  const { _id } = req.user;
   const { name, about } = req.body;
-
+  console.log(_id)
   try {
     const updateInfo = await User.findByIdAndUpdate(
       id,
