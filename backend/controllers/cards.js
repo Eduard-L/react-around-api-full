@@ -102,7 +102,7 @@ const likeCard = async (req, res, next) => {
       req.params.id,
       { $addToSet: { likes: _id } },
       { new: true },
-    ).populate["owner", "likes"];
+    ).populate(["likes"]);
 
     if (like) {
       res.status(200).send(like);
@@ -133,7 +133,7 @@ const disLikeCard = async (req, res, next) => {
       req.params.id,
       { $pull: { likes: _id } },
       { new: true },
-    ).populate["owner", "likes"];
+    ).populate(["likes"]);
 
     if (like) {
       res.status(200).send(like);
