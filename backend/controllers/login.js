@@ -20,18 +20,14 @@ const login = async (req, res, next) => {
       res.status(200).json(token)
     }
     else {
-      throw new Error()
+
+      next(new Unauthorized("your password or email are wrong"))
     }
 
   }
   catch (e) {
-    // if (e instanceof Unauthorized) {
-    //   // res.status(e.status).json(e.message);
-    //   return
-    // }
 
-    // res.status(DEFAULTERROR_CODE).send({ message: `something went wrong with the backend, ${e}` });
-    next(e)
+    next(new Unauthorized("your password or email are wrong"))
   }
 
 }

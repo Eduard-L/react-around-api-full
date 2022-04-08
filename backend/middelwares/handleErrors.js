@@ -1,4 +1,5 @@
 const handleErrors = (err, req, res, next) => {
+
   if (err.statusCode && err.message) {
     res.status(err.statusCode).send({ message: err.message });
     next();
@@ -7,7 +8,7 @@ const handleErrors = (err, req, res, next) => {
   }
 
 
-  res.status(500).send({ message: `some thing went wrong with the server  ${err}` });
+  res.status(500).send({ message: `some thing went wrong with the server  ${err.message}` });
 
   next();
 
