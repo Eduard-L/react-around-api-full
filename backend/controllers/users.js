@@ -38,9 +38,9 @@ const getUserById = async (req, res, next) => {
 };
 
 const getUserInfo = async (req, res, next) => {//done
-  const { id } = req.user
+  const { _id } = req.user
   try {
-    const user = await User.findOne({ id })
+    const user = await User.findOne({ _id })
     if (user) {
       res.status(200).send(user)
     }
