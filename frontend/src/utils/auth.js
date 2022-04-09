@@ -1,5 +1,5 @@
 // const BASE_URL = 'https://register.nomoreparties.co'
-const BASE_URL = 'https://spartan.students.nomoreparties.sbs'
+const BASE_URL = 'https://api.spartan.students.nomoreparties.sbs'
 
 
 function checkResponse(response) {

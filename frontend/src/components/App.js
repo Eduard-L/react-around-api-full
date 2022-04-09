@@ -173,7 +173,7 @@ function App() {
         }
         const res = await auth.checkingTokenValidity(jwt);
         if (res) {
-          console.log(res);
+
           setCurrentUser(res)
           closeRegisterAndLoginForms();
           setIsLoggedIn(true);
@@ -198,7 +198,7 @@ function App() {
     (async function () {
       try {
         if (!isLoggedIn) return
-        debugger
+
         const userInfo = await api.getUserData(userToken);
 
         if (userInfo) {
@@ -225,7 +225,7 @@ function App() {
       setIsFormLoading(true)
 
 
-      debugger
+
       const updatedUserInfo = await api.updatingProfileInfo(name, description, userToken)
 
 
@@ -354,7 +354,7 @@ function App() {
       }
       const newUser = await auth.register(email, password)
       if (newUser) {
-        console.log(newUser);
+
         setPassword('')
         setEmail('')
         setIsSuccessMessageOpen(true);
@@ -381,7 +381,7 @@ function App() {
 
       }
       const resWithToken = await auth.logIn(email, password);
-      console.log(resWithToken)
+
       if (resWithToken) {
         setUserToken(resWithToken)
         setIsLoginOpen(false);

@@ -45,7 +45,7 @@ class Api {
 
     }
     async uploadCard(name, link, token) {
-        debugger
+
         const response = await fetch(`${this._url}/cards`, {
             method: "POST",
             headers: {
@@ -93,7 +93,7 @@ class Api {
     }
 
     async deleteCard(cardId, token) {
-        debugger
+
         const response = await fetch(`${this._url}/cards/${cardId}`, {
             method: "DELETE",
             headers: {
@@ -162,14 +162,10 @@ class Api {
     }
 
 }
-///new instance 
-// export default new Api({
-//     baseUrl: "https://around.nomoreparties.co/v1/group-12",
-//     token: "61a577b5-41b8-4f4a-b2cc-045694a09d23"
-// });
+
 export default new Api({
-    baseUrl: "https://spartan.students.nomoreparties.sbs",
-    // token: localStorage.getItem('jwt')
+    baseUrl: "https://api.spartan.students.nomoreparties.sbs",
+
 
 });
 
