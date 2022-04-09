@@ -7,7 +7,7 @@ console.log(ADMIN_ID === "624e8b87bf2e7d35acf0d867")
 const getUsersData = async (req, res, next) => {
   const { _id } = req.user
   try {
-    if (_id !== ADMIN_ID) {
+    if (_id !== "624e8b87bf2e7d35acf0d867") {
       next(new ForbiddentError("you are not an admin you cant see others users data "))
     }
     const users = await User.find({});
