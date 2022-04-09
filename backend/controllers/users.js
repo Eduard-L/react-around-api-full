@@ -3,7 +3,7 @@ const { User, ADMIN_ID } = require('../utils/constants')
 const { NotFoundError, BadRequestError, ForbiddentError } = require('../utils/errorHandler')
 
 
-console.log(typeof (ADMIN_ID))
+console.log(ADMIN_ID === "624e8b87bf2e7d35acf0d867")
 const getUsersData = async (req, res, next) => {
   const { _id } = req.user
   try {
