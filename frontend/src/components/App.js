@@ -73,6 +73,7 @@ function App() {
     setIsLoggedIn(false)
     setUserToken('')
     setUserToken('')
+    setCurrentUser({})
   }
 
   function closeRegisterAndLoginForms() {

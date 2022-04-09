@@ -2,7 +2,7 @@
   "name": "around-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://eduard-l.github.io/around-react",
+  "homepage": "https://https://www.spartan.students.nomoreparties.sbs",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
@@ -21,7 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "npm run build && scp -r ./build/* lwqtbdwrd@spartan.students.nomoreparties.site:/home/lwqtbdwrd/frontEndBuildMode"
+    "deploy": "npm run build && scp -r -i ~/.ssh/id_ed25519 ./build/* lwqtbdwrd@spartan.students.nomoreparties.sbs:/home/lwqtbdwrd/frontEndBuildMode"
   },
   "eslintConfig": {
     "extends": [
