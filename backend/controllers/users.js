@@ -1,12 +1,13 @@
 
-const { User } = require('../utils/constants')
+const { User, ADMIN_ID } = require('../utils/constants')
 const { NotFoundError, BadRequestError, ForbiddentError } = require('../utils/errorHandler')
+
 
 
 const getUsersData = async (req, res, next) => {
   const { _id } = req.user
   try {
-    if (_id !== '624e8b87bf2e7d35acf0d867') {
+    if (_id !== ADMIN_ID) {
       next(new ForbiddentError("you are not an admin you cant see others users data "))
     }
     const users = await User.find({});
@@ -130,11 +131,11 @@ const updateUserAvatar = async (req, res, next) => {//done
 };
 
 const deleteUser = async (req, res, next) => {
-  const { _id } = req.params;
+  const { _id } = req.user;
 
 
   try {
-    if (_id !== '62506c7e6363088ec820099e') {
+    if (_id !== ADMIN_ID) {
       next(new ForbiddentError("you are not an admin you cant delete other users "))
     }
     const deletingUser = await User.findByIdAndDelete(id);
