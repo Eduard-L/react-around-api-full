@@ -104,10 +104,10 @@ const updateUserAvatar = async (req, res, next) => {//done
   const { avatar } = req.body;
 
   try {
-    const updateInfo = await User.findByIdAndUpdate(_id, { avatar }, { runValidators: true });
+    const updatedInfo = await User.findByIdAndUpdate(_id, { avatar }, { runValidators: true });
     if (updateInfo && avatar) {
       res.status(200).send({ message: 'the user avatar updated successfully' });
-    } else if (userId !== null) {
+    } else if (updatedInfo !== null) {
       // res.status(NOTFOUND_CODE).json({ message: 'the user that you are trying to update is no longer excist' });
       next(new NotFoundError('the user that you are trying to update is no longer excist'))
     } else {
