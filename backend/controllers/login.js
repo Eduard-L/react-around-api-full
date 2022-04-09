@@ -2,6 +2,8 @@ const { User, jwt, mySecret, JWT_SECRET, NODE_ENV } = require('../utils/constant
 
 const { Unauthorized, BadRequestError } = require('../utils/errorHandler')
 
+console.log(JWT_SECRET)
+
 const login = async (req, res, next) => {
 
   const { password, email } = req.body
