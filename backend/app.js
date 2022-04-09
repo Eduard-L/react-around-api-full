@@ -4,8 +4,6 @@ const mongoose = require('mongoose');
 
 const helmet = require('helmet');
 
-const { handleCors } = require('./middelwares/cors')
-
 const bodyParser = require('body-parser');
 
 const mainRouter = require('./routes/index');
@@ -19,7 +17,7 @@ const { requestLogger, errorLogger } = require('./middelwares/logger')
 const { errors } = require('celebrate');
 
 const cors = require("cors");
-
+const { NODE_ENV } = require('./utils/constants');
 
 const app = express();
 
@@ -50,18 +48,16 @@ app.use(requestLogger);
 
 app.use('/', mainRouter);
 
-app.use(handleErrors)
-
 app.use(errorLogger);
+
+app.use(handleErrors)
 
 mainRouter.use(errors())
 
+if (NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`everything works at port ${PORT}`);
+  });
+}
 
-
-
-
-
-app.listen(PORT, () => {
-  console.log(`everything works at port ${PORT}`);
-});
 

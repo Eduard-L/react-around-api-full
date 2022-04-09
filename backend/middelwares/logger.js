@@ -8,7 +8,7 @@ const requestLogger = expressWinston.logger({
   format: winston.format.json(),
 });
 
-console.log(3)
+
 
 const errorLogger =
   expressWinston.errorLogger({

@@ -1,4 +1,4 @@
-const { User, jwt, mySecret } = require('../utils/constants')
+const { User, jwt, mySecret, JWT_SECRET, NODE_ENV } = require('../utils/constants')
 
 const { Unauthorized, BadRequestError } = require('../utils/errorHandler')
 
@@ -15,7 +15,7 @@ const login = async (req, res, next) => {
     if (user) {
       const { _id } = user._id
       console.log(_id)
-      const token = await jwt.sign({ _id: user._id }, mySecret, { expiresIn: 3600 })
+      const token = await jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: 3600 })
 
       res.status(200).json(token)
     }

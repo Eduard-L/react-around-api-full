@@ -13,4 +13,8 @@ const User = require('../models/user');
 
 const mySecret = 'askhdskhs/3232%#%#Kdsj2#433LSKJLSJL#!#@#%^^*^*akshdkjshdjshshd@D#V%^^B&B*&&N&%$%#C$CVVBHGVE#$#$$#43639435;aaldkscm,xcndhds.,usgwugegfxfkjbgfugbuywg23245656'
 
-module.exports = { bcrypt, User, VALIDATION_CODE, DEFAULTERROR_CODE, SALT, jwt, mySecret, NOTFOUND_CODE, UNAUTHORIZED_CODE, UNAUTHORIZEDUSER_CODE }
+require('dotenv').config()
+
+const { JWT_SECRET, NODE_ENV } = process.env
+
+module.exports = { bcrypt, User, VALIDATION_CODE, DEFAULTERROR_CODE, SALT, jwt, mySecret, NOTFOUND_CODE, UNAUTHORIZED_CODE, UNAUTHORIZEDUSER_CODE, JWT_SECRET, NODE_ENV }
