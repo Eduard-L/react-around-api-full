@@ -17,8 +17,10 @@ const createUser = async (req, res, next) => {
         name, about, avatar, email, password: userPassword,
       });
       if (newUser) {
-        const { _id, name, about, avatar, email } = newUser
-        res.status(201).send({ _id: _id, name: name, about: about, avatar: avatar, email: email });
+        const { _id } = newUser;
+        res.status(201).send({
+          _id, name: newUser.name, about: newUser.about, avatar: newUser.avatar, email,
+        });
       } else {
         throw new Error();
       }

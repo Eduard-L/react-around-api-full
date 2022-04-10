@@ -15,7 +15,8 @@ usersRouter.get('/me', getUserInfo);
 usersRouter.get('/:id', celebrate({
 
   params: Joi.object().keys({
-    id: Joi.string().required().alphanum().length(24).hex(),
+    id: Joi.string().required().alphanum().length(24)
+      .hex(),
   }),
 }), getUserById);
 
@@ -36,7 +37,8 @@ usersRouter.patch('/me/avatar', celebrate({
 usersRouter.delete('/:id', celebrate({
 
   params: Joi.object().keys({
-    id: Joi.string().required().alphanum().length(24).hex(),
+    id: Joi.string().required().alphanum().length(24)
+      .hex(),
   }),
 }), deleteUser);
 

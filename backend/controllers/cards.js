@@ -63,29 +63,24 @@ const createCard = async (req, res, next) => {
 
 const deleteCard = async (req, res, next) => {
   const { id } = req.params;
-  const { _id } = req.user
+  const { _id } = req.user;
 
   try {
-    const card = await Card.findById(id)
+    const card = await Card.findById(id);
     const cardOwnerID = card.owner.toHexString();
     if (_id === cardOwnerID) {
       const removeCard = await Card.findByIdAndDelete(id);
       if (removeCard) {
-        res.status(200).json(removeCard)
-      }
-      else {
+        res.status(200).json(removeCard);
+      } else {
         throw new Error();
       }
+    } else if (card === null) {
+      next(new NotFoundError('cards does not excist'));
+    } else {
+      next(new ForbiddentError('you cant delete other users card'));
     }
-    else if (card === null) {
-      next(new NotFoundError('cards does not excist'))
-    }
-    else {
-      next(new ForbiddentError('you cant delete other users card'))
-    }
-  }
-
-  catch (e) {
+  } catch (e) {
     if (e.name === 'CastError') {
       next(new BadRequestError('your info is invalid , please try again!'));
       return;
