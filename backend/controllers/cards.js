@@ -62,7 +62,7 @@ const createCard = async (req, res, next) => {
 };
 
 const deleteCard = async (req, res, next) => {
-  // const { id } = req.params;
+  const { id } = req.params;
   // const { _id } = req.user
 
   try {
