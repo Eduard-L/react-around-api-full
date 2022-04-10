@@ -15,6 +15,7 @@ const auth = (req, res, next) => {
     const payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
     if (payload) {
       req.user = payload;
+
     } else {
       next(new Unauthorized('Authorization required'));
       return;
