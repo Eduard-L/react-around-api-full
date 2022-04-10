@@ -63,14 +63,12 @@ const createCard = async (req, res, next) => {
 
 const deleteCard = async (req, res, next) => {
   const { id } = req.params;
-  // const { _id } = req.user
+  const { _id } = req.user
 
   try {
     const card = await Card.findById(id)
-
-    // console.log(_id);
-    // console.log(card.owner._id)
-    if (card.owner._id === req.user._id) {
+    const cardOwnerID = card.owner.toHexString();
+    if (_id === cardOwnerID) {
       const removeCard = await Card.findByIdAndDelete(id);
       if (removeCard) {
         res.status(200).json(removeCard)

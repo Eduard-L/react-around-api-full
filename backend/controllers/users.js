@@ -4,12 +4,12 @@ const { NotFoundError, BadRequestError, ForbiddentError } = require('../utils/er
 const getUsersData = async (req, res, next) => {
   const { _id } = req.user;
   try {
-    // if (_id !== ADMIN_ID) {
-    //   next(new ForbiddentError('you are not an admin you cant see others users data '));
-    // }
+    if (_id !== ADMIN_ID) {
+      next(new ForbiddentError('you are not an admin you cant see others users data '));
+    }
     const users = await User.find({});
     if (users) {
-      res.status(200).send(_id);
+      res.status(200).send(users);
     } else {
       throw new Error();
     }
