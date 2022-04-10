@@ -1,8 +1,7 @@
-
 class Unauthorized extends Error {
   constructor(message) {
-    super(message)
-    this.statusCode = 401
+    super(message);
+    this.statusCode = 401;
   }
 }
 
@@ -32,6 +31,6 @@ class ConflictError extends Error {
   }
 }
 
-
-
-module.exports = { NotFoundError, ForbiddentError, BadRequestError, Unauthorized, ConflictError }
+module.exports = {
+  NotFoundError, ForbiddentError, BadRequestError, Unauthorized, ConflictError,
+};

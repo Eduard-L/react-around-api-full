@@ -5,6 +5,6 @@ const validateURL = (value, helpers) => {
     return value;
   }
   return helpers.error('string.uri');
-}
-module.exports = { validateURL }
-//validation value for the link property
+};
+module.exports = { validateURL };
+// validation value for the link property
