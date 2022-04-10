@@ -66,7 +66,7 @@ const deleteCard = async (req, res, next) => {
   // const { _id } = req.user
 
   try {
-    const card = await Card.findById(id).populate("owner")
+    const card = await Card.findById(id)
 
     // console.log(_id);
     // console.log(card.owner._id)
