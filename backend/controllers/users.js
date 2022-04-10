@@ -9,7 +9,7 @@ const getUsersData = async (req, res, next) => {
     // }
     const users = await User.find({});
     if (users) {
-      res.status(200).send(req.users);
+      res.status(200).send(_id);
     } else {
       throw new Error();
     }
