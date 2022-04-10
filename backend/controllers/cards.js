@@ -70,7 +70,7 @@ const deleteCard = async (req, res, next) => {
 
     // console.log(_id);
     // console.log(card.owner._id)
-    if (card.owner === req.user) {
+    if (card.owner._id === req.user._id) {
       const removeCard = await Card.findByIdAndDelete(id);
       if (removeCard) {
         res.status(200).json(removeCard)
