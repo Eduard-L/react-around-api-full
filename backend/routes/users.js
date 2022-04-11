@@ -6,7 +6,7 @@ const { validateURL } = require('../helpers/validaotrs');
 const {
   deleteUser, getUsersData, getUserById, updateUserInfo, updateUserAvatar, getUserInfo,
 } = require('../controllers/users');
-// const { auth } = require('../middelwares/auth');
+
 
 usersRouter.get('/', getUsersData);
 
