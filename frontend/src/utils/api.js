@@ -164,7 +164,7 @@ class Api {
 }
 
 export default new Api({
-    baseUrl: "https://api.spartan.students.nomoreparties.sbs",
+    baseUrl: "https://api.around-us.students.nomoredomainssbs.ru",
 
 
 });

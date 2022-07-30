@@ -1,5 +1,5 @@
 
-const BASE_URL = 'https://api.spartan.students.nomoreparties.sbs'
+const BASE_URL = 'https://api.around-us.students.nomoredomainssbs.ru'
 
 
 function checkResponse(response) {

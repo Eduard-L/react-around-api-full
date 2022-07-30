@@ -12,6 +12,7 @@
 	border-radius: 2px;
 	border-style: none;
 	transition: opacity .5s ease-in-out;
+	cursor: pointer;
 }
 .register__button:hover {
 	opacity: 0.6;

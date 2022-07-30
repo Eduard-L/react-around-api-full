@@ -13,9 +13,6 @@ import { EditAvatarPopup } from './EditAvatarPopup'
 import { AddPlacePopup } from './AddPlacePopup'
 import { Register } from './Register';
 import { Login } from './Login'
-// import FormValidator from '../utils/FormValidator';
-// import { pageSettings } from '../utils/constants';
-import Popup from './Popup';
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import { ProtectedRoute } from './ProtectedRoute'
 import * as auth from '../utils/auth'
