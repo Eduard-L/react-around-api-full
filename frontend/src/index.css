@@ -63,3 +63,4 @@
 @import url(./blocks/header/__burger-menu/header__burger-menu.css);
 @import url(./blocks/header/__logo-container/header__logo-container.css);
 @import url(./blocks/header/__close-button/header__close-button.css);
+@import url(./blocks/register/__error-message/register__error-message.css);

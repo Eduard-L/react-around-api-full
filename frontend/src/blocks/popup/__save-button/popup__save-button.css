@@ -6,6 +6,7 @@
   min-width: 358px;
   padding-top: 14px;
   padding-bottom: 14px;
+  margin-top: 36px;
   margin-bottom: 36px;
   font-family: "Inter", sans-serif;
   font-style: normal;
@@ -13,7 +14,6 @@
   font-size: 18px;
   line-height: 22px;
   align-self: center;
-  margin-top: 18px;
   transition: opacity 0.5s linear;
   
 }
@@ -22,11 +22,18 @@
   opacity: 0.8;
   cursor: pointer;
 }
+.popup__save-button:disabled {
+  opacity: 0.2;
+	color: black;
+	background-color: transparent;
+  cursor: not-allowed;
+	border: 1px solid black;
+}
 @media screen and (max-width: 520px) {
   .popup__save-button {
     min-width: 238px;
     margin-bottom: 25px;
-    margin-top: 15px;
+    margin-top: 25px;
     font-size: 14px;
     line-height: 17px;
   }

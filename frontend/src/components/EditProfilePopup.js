@@ -1,7 +1,7 @@
 import { PopupWithForm } from "./PopupWithForm"
 import { useState, useContext, useEffect } from "react"
 import CurrentUserContext from "../contexts/CurrentUserContext"
-import Popup from "./Popup"
+import { useForm } from "../utils/useForm"
 
 
 
@@ -10,10 +10,17 @@ export function EditProfilePopup({ isOpen, onClose, onUpdateUser, isFormLoading 
 
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
+    const [handleChange, setIsValid, resetForm, isValid, errors] = useForm();
 
     useEffect(() => {
         setName(userInfo.name);
         setDescription(userInfo.about);
+        resetForm()
+        setIsValid(true)
+
+        // handleChange({ name: "name", value: userInfo.name })
+        // handleChange({ name: "job", value: userInfo.about })
+
     }, [userInfo, isOpen]);
 
     function handleSubmit(e) {
@@ -24,6 +31,12 @@ export function EditProfilePopup({ isOpen, onClose, onUpdateUser, isFormLoading 
         });
 
     }
+    // useEffect(() => {
+
+
+
+
+    // }, [])
 
     return (
 
@@ -37,6 +50,8 @@ export function EditProfilePopup({ isOpen, onClose, onUpdateUser, isFormLoading 
             name="edit-profile"
             onClose={onClose}
             isOpen={isOpen}
+            isValid={isValid}
+
 
 
         >
@@ -45,15 +60,15 @@ export function EditProfilePopup({ isOpen, onClose, onUpdateUser, isFormLoading 
                 type="text"
                 id="input_type_name"
                 className="popup__input popup__input_type_name"
-                name="user_name"
+                name="name"
                 minLength="2"
                 maxLength="40"
                 placeholder="Enter Your Name"
                 required
                 value={name || ''}
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => { setName(e.target.value); handleChange(e) }}
             />
-            <span id="input_type_name-error" className="popup__error"></span>
+            <span id="input_type_name-error" className="popup__error">{errors.name}</span>
 
             <input
                 type="text"
@@ -65,9 +80,9 @@ export function EditProfilePopup({ isOpen, onClose, onUpdateUser, isFormLoading 
                 placeholder="Enter Your Job"
                 required
                 value={description || ''}
-                onChange={(e) => setDescription(e.target.value)}
+                onChange={(e) => { setDescription(e.target.value); handleChange(e) }}
             />
-            <span id="input_type_description-error" className="popup__error"></span>
+            <span id="input_type_description-error" className="popup__error">{errors.job}</span>
 
 
         </PopupWithForm>

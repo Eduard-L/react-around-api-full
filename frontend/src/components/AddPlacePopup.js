@@ -1,14 +1,17 @@
 import { useState, useEffect } from "react";
 import { PopupWithForm } from "./PopupWithForm"
 import Popup from "./Popup";
+import { useForm } from "../utils/useForm";
 export function AddPlacePopup({ isOpen, onClose, onUpdateCards, isFormLoading }) {
 
     const [cardName, setCardName] = useState('')
     const [cardLink, setCardLink] = useState('')
+    const [handleChange, , resetForm, isValid, errors] = useForm();
 
     useEffect(() => {
         setCardName('');
         setCardLink('');
+        resetForm()
     }, [isOpen]);
 
 
@@ -28,6 +31,7 @@ export function AddPlacePopup({ isOpen, onClose, onUpdateCards, isFormLoading })
             onClose={onClose}
             isOpen={isOpen}
             name="add-card"
+            isValid={isValid}
         >
 
 
@@ -36,27 +40,27 @@ export function AddPlacePopup({ isOpen, onClose, onUpdateCards, isFormLoading })
                 type="text"
                 id="input_type_title"
                 className="popup__input popup__input_type_title"
-                name="title__card"
+                name="cardTitle"
                 placeholder="Title"
-                minLength="1"
+                minLength="2"
                 maxLength="30"
                 required
                 value={cardName || ''}
-                onChange={(e) => setCardName(e.target.value)}
+                onChange={(e) => { setCardName(e.target.value); handleChange(e) }}
             />
-            <span id="input_type_title-error" className="popup__error"></span>
+            <span id="input_type_title-error" className="popup__error">{errors.cardTitle}</span>
 
             <input
                 type="url"
                 id="input_type_url"
                 className="popup__input popup__input_type_url"
-                name="image__url"
+                name="imageUrl"
                 placeholder="Image URL"
                 required
                 value={cardLink || ''}
-                onChange={(e) => setCardLink(e.target.value)}
+                onChange={(e) => { setCardLink(e.target.value); handleChange(e) }}
             />
-            <span id="input_type_url-error" className="popup__error"></span>
+            <span id="input_type_url-error" className="popup__error">{errors.imageUrl}</span>
 
 
 

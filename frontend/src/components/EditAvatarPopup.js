@@ -1,12 +1,15 @@
 import { PopupWithForm } from "./PopupWithForm"
 import { useRef, useEffect } from "react";
 import Popup from "./Popup";
+import { useForm } from "../utils/useForm"
 
 export function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, isFormLoading }) {
     const inputRef = useRef()
+    const [handleChange, , resetForm, isValid, errors] = useForm();
 
     useEffect(() => {
-        inputRef.current.value = ''
+        inputRef.current.value = '';
+        resetForm();
     }, [isOpen]);
 
     function handleSubmit(e) {
@@ -29,7 +32,10 @@ export function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, isFormLoading
             onSubmit={handleSubmit}
             onClose={onClose}
             isOpen={isOpen}
-            name="edit-profile-img"
+            name="profile-img"
+            isValid={isValid}
+
+
         >
 
 
@@ -37,13 +43,15 @@ export function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, isFormLoading
                 type="url"
                 id="input_type_url_photo"
                 className="popup__input popup__input_type_url"
-                name="profile-pic__url"
+                name="profileImg"
                 placeholder="Enter your profile photo URL"
                 ref={inputRef}
                 defaultValue={''}
+                minLength={6}
+                onChange={handleChange}
                 required
             />
-            <span id="input_type_url_photo-error " className="popup__error"></span>
+            <span id="input_type_url_photo-error" className="popup__error">{errors.profileImg}</span>
 
         </PopupWithForm>
 

@@ -18,6 +18,7 @@ export function DeleteCardPopup({ onClose, name, isOpen, handleDeleteCard, cardF
             onSubmit={handleSubmitDeleteCard}
             isFormLoading={isFormLoading}
             isOpen={isOpen}
+            isValid={true}
         >
 
         </PopupWithForm>

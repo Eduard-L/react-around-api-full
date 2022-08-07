@@ -47,6 +47,7 @@ function App() {
   const [userToken, setUserToken] = useState(localStorage.getItem("jwt"))
 
 
+
   function handleRegisterForm() {
 
     setIsRegisterOpen(true)
@@ -364,8 +365,8 @@ function App() {
     }
     catch (e) {
       console.log('something went wrong with backend', e)
-      setPassword('')
-      setEmail('')
+      // setPassword('')
+      // setEmail('')
       setIsFailedMessageOpen(true);
     }
   }
@@ -393,8 +394,8 @@ function App() {
     catch (e) {
       console.log('something went wrong with backend', e)
       setIsFailedMessageOpen(true)
-      setEmail('');
-      setPassword('');
+      // setEmail('');
+      // setPassword('');
 
     }
 
