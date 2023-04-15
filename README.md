@@ -46,3 +46,4 @@ You can try it [here](https://around-us.students.nomoredomainssbs.ru/)![icons8-f
 
 BackEnd code is [here](https://github.com/Eduard-L/react-around-api-full/tree/main/backend)![icons8-finger-60](https://user-images.githubusercontent.com/87845853/166671389-fcd307a3-171d-48f1-b7b8-d66605242eb4.png)
 
+Presentation video is [here](https://youtu.be/_JoYSOKKe18)![icons8-finger-60](https://user-images.githubusercontent.com/87845853/166671389-fcd307a3-171d-48f1-b7b8-d66605242eb4.png)
